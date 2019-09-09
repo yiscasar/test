@@ -1,0 +1,23 @@
+stages {
+	stage ("stage 1"){
+		steps{
+				sh "sh script_time.sh"
+				sh "sh script_date.sh"
+				sh "sh script_sys.sh"
+			} //steps
+		 } //stage 1
+	stage("stage 2"){
+		steps{
+				now=$(date +"%T")
+				sh "echo "The current time is $now" > info.txt"
+				sh "echo "--------------------------">> info.txt"
+				sh "echo "Time:"> tempo.txt"
+				sh "paste tempo.txt time.txt >> info.txt"
+				sh "echo "Date:"> tempo.txt"
+				sh "paste tempo.txt date.txt >> info.txt"
+				sh "echo "Sys:"> tempo.txt"
+				sh "paste tempo.txt sys.txt >> info.txt"
+			} //steps
+		} //stege 2
+	} //stages
+			
